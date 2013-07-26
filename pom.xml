@@ -17,46 +17,6 @@
         <jackson2.version>2.1.1</jackson2.version>
     </properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>site</phase>
-						<configuration>
-							<tasks>
-								<mkdir dir="${project.reporting.outputDirectory}/schema" />
-								<copy todir="${project.reporting.outputDirectory}/schema">
-									<fileset dir="src/main/resources">
-										<include name="**/*.xsd" />
-									</fileset>
-									<mapper type="flatten" />
-								</copy>
-
-								<copy file="${project.reporting.outputDirectory}/schema/spring-security-oauth2-1.0.xsd" tofile="${project.reporting.outputDirectory}/schema/spring-security-oauth2.xsd" />
-
-								<zip destfile="${project.reporting.outputDirectory}/sparklr2.zip">
-									<zipfileset dir="../samples/oauth2/sparklr" includes="pom.xml src/**" prefix="sparklr" />
-								</zip>
-								<zip destfile="${project.reporting.outputDirectory}/tonr2.zip">
-									<zipfileset dir="../samples/oauth2/tonr" includes="pom.xml src/**" prefix="tonr" />
-								</zip>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.springsource.bundlor</groupId>
-				<artifactId>com.springsource.bundlor.maven</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
