@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -110,25 +109,7 @@ public abstract class OAuth2AccessTokenSupport {
 		try {
 			// Prepare headers and form before going into rest template call in case the URI is affected by the result
 			authenticationHandler.authenticateTokenRequest(resource, form, headers);
-			
-			Iterator<String> it = form.keySet().iterator();
-			while(it.hasNext()){
-				String tmp = it.next();
-				logger.debug("eeeeeeeeeeform  = " + tmp +" : " + form.get(tmp));
-			}
-			
-			it = headers.keySet().iterator();
-			while(it.hasNext()){
-				String tmp = it.next();
-				logger.debug("eeeeeeeeeeheaders  = " + tmp +" : " + headers.get(tmp));
-			}
-			logger.debug("eeeeeeeeeegetHttpMethod  = " + getHttpMethod().toString());
-			logger.debug("eeeeeeeeeegetAccessTokenUri  = " + getAccessTokenUri(resource, form));
-			logger.debug("eeeeeeeeeetoSingleValueMap  = " + form.toSingleValueMap());
-			
-			
-			
-			
+
 			return getRestTemplate().execute(getAccessTokenUri(resource, form), getHttpMethod(),
 					getRequestCallback(resource, form, headers), getResponseExtractor(), form.toSingleValueMap());
 

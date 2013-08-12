@@ -15,13 +15,11 @@ package org.springframework.security.oauth2.provider.token;
 import java.util.Collection;
 
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Dave Syer
  *
  */
-@Service
 public interface ConsumerTokenServices {
 	
 	Collection<OAuth2AccessToken> findTokensByUserName(String userName);
