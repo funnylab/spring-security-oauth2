@@ -40,9 +40,6 @@ public class DefaultAuthenticationKeyGenerator implements AuthenticationKeyGener
 
 	public String extractKey(OAuth2Authentication authentication) {
 		Map<String, String> values = new LinkedHashMap<String, String>();
-		System.out.println("authentication : " + authentication);
-		System.out.println("authentication : " + authentication.getOAuth2Request());
-		System.out.println("authentication : " + authentication.getName());
 		OAuth2Request authorizationRequest = authentication.getOAuth2Request();
 		if (!authentication.isClientOnly()) {
 			values.put(USERNAME, authentication.getName());
